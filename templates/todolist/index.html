@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div>
+        <img src="{% static 'images/edgelogo.jpg' %}" alt="error" height="100px" width="100px" >
+    </div>
+
+    <div class="container mt-5">
+
+{#    <div class="d-flex justify-content-start">#}
+{#        <a href="./aboutus.html" style="color: brown">About#}
+{#        </a>#}
+{#    </div>#}
+{#    <div class="d-flex justify-content-end">#}
+{#        <a href="./contactus.html" style="color: brown">Contact#}
+{#        </a>#}
+{#    </div>#}
+     <div class="text-center">
+           <h1 style="color: darkblue" >My to-do List Application</h1>
+    </div>
+
+
+
+    <div class="row m-auto mt-3">
+        <div class="col - 8 bg-primary" >
+
+            <div class="text-center p-2 fw-bolder">
+                Pending Tasks
+                <hr/>
+            </div>
+
+
+            {% for task in task %}
+
+                <div class="p-2 bg-light m-1">
+                {{ task }}
+                <i class="fa-solid fa-floppy-disk float-end m1 ;"></i>
+                <i class="fa-solid fa-trash-can float-end m1"></i>
+                <i class="fa-regular fa-pen-to-square float-end m1"></i>
+                </div>
+
+            {% endfor %}
+
+{#            <div>#}
+{#                Task 1#}
+{#                {{ task }}#}
+{#            </div>#}
+{#            <div>#}
+{#                Task 2#}
+{#            </div>#}
+{#            <div>#}
+{#                Task 3#}
+{#            </div>#}
+{#            <div>#}
+{#                Task 4#}
+{#            </div>#}
+{#            <div>#}
+{#                Task 5#}
+{#            </div>#}
+        </div>
+
+        <div class="col - 4 bg-info">
+            <div class="text-center p-2 fw-bolder">
+                ADD NEW TASK
+                <hr/>
+            </div>
+            <div>
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="task" name="task" placeholder="new task">
+                         <label for="task">New Task</label>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-sm btn-warning" type="submit">
+                            Save
+                        </button>
+
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+{% endblock content %}
